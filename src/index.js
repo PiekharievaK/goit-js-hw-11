@@ -27,8 +27,8 @@ function onSearchFormSubmit(evt) {
     fetchGallery.query = evt.target.elements.searchQuery.value.trim();
 
     fetchGallery.fetchImagesCards()
+    .then(createMarkup)
     .then(successFetchMessage)
-        .then(createMarkup)
         .then(lightbox);  
 }
 
@@ -53,7 +53,7 @@ window.scrollBy({
 
 function createMarkup(imagesArr) {
     const imagesAmount = imagesArr.hits.length;
-    console.log(imagesArr)
+ 
     
     loadMoreBtn.classList.remove('is-hidden');
      
@@ -77,13 +77,16 @@ function createMarkup(imagesArr) {
     loadMoreBtn.classList.add('is-hidden');
     Notiflix.Notify.info("We're sorry, but you've reached the end of search results.")
      }
+    return imagesArr
 }
 
 
-function successFetchMessage(data){
-        if (data.hits.length > 0) {
-            Notiflix.Notify.success(`Hooray! We found ${data.totalHits} images !!!`);
-        }
+function successFetchMessage(data) {
+   
+    if (data) {
+            
+        Notiflix.Notify.success(`Hooray! We found ${data.totalHits} images !!!`);
+    }
         return data
     }
 
