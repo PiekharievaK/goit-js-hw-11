@@ -76,7 +76,10 @@ function createMarkup(imagesArr) {
 
      if (imagesArr.hits.length < 40 && imagesArr.hits.length > 0) {
     loadMoreBtn.classList.add('is-hidden');
-    Notiflix.Notify.info("We're sorry, but you've reached the end of search results.")
+         setTimeout(() =>
+         {
+             Notiflix.Notify.info("We're sorry, but you've reached the end of search results.")
+         }, 0); 
      }
     return imagesArr
 }
