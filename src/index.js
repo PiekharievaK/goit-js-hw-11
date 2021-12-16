@@ -21,6 +21,7 @@ loadMoreBtn.addEventListener(`click`, onLoadMore)
 
 function onSearchFormSubmit(evt) {
     evt.preventDefault();
+    loadMoreBtn.classList.add(`is-hidden`); 
     clearImagesBox();
     fetchGallery.resetPage();
 
